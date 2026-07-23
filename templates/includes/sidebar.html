@@ -1,0 +1,44 @@
+<div class="bg-color-sidebar sticky-top d-flex flex-column flex-shrink-0 p-3 text-white" style="width: 280px; height: 100vh">
+    <span class="fs-2 text-center">Task Manager</span>
+    <hr>
+    <ul class="nav nav-pills flex-column mb-auto">
+      <li class="nav-item">
+        <a href="{% url 'task_manager:index' %}" class="nav-link-active fs-5 nav-link text-white" aria-current="page">
+          Home
+        </a>
+      </li>
+      <li>
+        <a href="#" class="nav-link-active fs-5 nav-link text-white">
+          Tasks
+        </a>
+      </li>
+      <li>
+        <a href="#" class="nav-link-active fs-5 nav-link text-white">
+          Task types
+        </a>
+      </li>
+      <li>
+        <a href="#" class="nav-link-active fs-5 nav-link text-white">
+          Positions
+        </a>
+      </li>
+      <li>
+        <a href="#" class="nav-link-active fs-5 nav-link text-white">
+          Workers
+        </a>
+      </li>
+    </ul>
+    <hr>
+    <div class="dropdown">
+      <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+        <img src="#" alt="" width="32" height="32" class="rounded-circle me-2">
+        <strong>{{ user.username }}</strong>
+      </a>
+      <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
+        <li><a class="dropdown-item" href="#">Edit profile</a></li>
+        <li><a class="dropdown-item" href="#">Profile</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item" href="#">Sign out</a></li>
+      </ul>
+    </div>
+  </div>

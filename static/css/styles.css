@@ -1,0 +1,16 @@
+body {
+  background-color: #f2fbf2;
+}
+
+.nav-link-active:hover {
+    background-color: #395F39;
+    color: #fff;
+}
+
+.bg-color {
+    background-color: #E5FEE5;
+}
+
+.bg-color-sidebar {
+    background-color: #4C7F4C;
+}
