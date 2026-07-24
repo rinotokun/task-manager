@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <div class="card" style="width: 12rem;">
+  <div class="card" style="width: 12rem; margin: 10px 30px;">
     <div class="card-body">
       <h4>
         Hi,
@@ -13,7 +13,26 @@
       </h4>
     </div>
   </div>
-  <div class="text-center">
+  <div class="text-center" style="margin-top: 15vh;">
     <h1>Welcome to Task Manager</h1>
+  </div>
+  <br>
+  <div class="d-flex justify-content-center gap-3 row row-cols-1 row-cols-md-2 mb-2 text-center">
+    <div class="col" style="width: 300px;">
+      <div class="card mx-auto card mb-4 rounded-3 shadow-sm">
+        <div class="card-body">
+          <h3>Tasks in system</h3>
+          <span class="fs-4">{{ num_tasks }}</span>
+        </div>
+      </div>
+    </div>
+    <div class="col" style="width: 300px;">
+      <div class="card mb-4 rounded-3 shadow-sm">
+        <div class="card-body">
+          <h3>Your tasks</h3>
+          <span class="fs-4">{{ num_user_tasks }}</span>
+        </div>
+      </div>
+    </div>
   </div>
 {% endblock %}
