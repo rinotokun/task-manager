@@ -1,18 +1,32 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>
+  <h1 class="display-1">
     Task Types
     <a href="{% url 'task_manager:tasktype-create' %}" class="btn-color btn link-to-page">
       Create
     </a>
   </h1>
+  <br>
   {% if tasktype_list %}
-    <ul>
+  <table class="table-bg-color table" style="width: 550px;">
+    <thead>
+      <tr>
+        <th class="text-body-secondary">Name</th>
+        <th class="text-body-secondary">Number of tasks</th>
+        <th class="text-body-secondary">Action</th>
+      </tr>
+    </thead>
+    <tbody>
       {% for tasktype in tasktype_list %}
-        <li>{{ tasktype }}</li>
+          <tr>
+            <td>{{ tasktype }}</td>
+            <td>{{ tasktype.tasks.count }}</td>
+            <td><a href="{% url 'task_manager:tasktype-delete' pk=tasktype.id %}?next={{ request.get_full_path }}" class="btn btn-sm btn-danger">Delete</a></td>
+          </tr>
       {% endfor %}
-    </ul>
+    </tbody>
+  </table>
   {% else %}
     <p>There are currently no task types.</p>
   {% endif %}

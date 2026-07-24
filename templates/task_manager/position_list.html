@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>
+  <h1 class="display-1">
     Positions
     <a href="{% url 'task_manager:position-create' %}" class="btn-color btn link-to-page">
       Create
@@ -9,11 +9,24 @@
   </h1>
 
   {% if position_list %}
-    <ul>
+    <table class="table-bg-color table" style="width: 550px;">
+      <thead>
+        <tr>
+          <th class="text-body-secondary">Name</th>
+          <th class="text-body-secondary">Number of employees</th>
+          <th class="text-body-secondary">Action</th>
+        </tr>
+      </thead>
+      <tbody>
       {% for position in position_list %}
-        <li>{{ position }}</li>
+        <tr>
+          <td>{{ position }}</td>
+          <td>{{ position.workers.count }}</td>
+          <td><a href="{% url 'task_manager:position-delete' pk=position.id %}?next={{ request.get_full_path }}" class="btn btn-sm btn-danger">Delete</a></td>
+        </tr>
       {% endfor %}
-    </ul>
+      </tbody>
+    </table>
   {% else %}
     <p>There are currently no positions.</p>
   {% endif %}
