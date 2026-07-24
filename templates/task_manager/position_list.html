@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>
+    Positions
+    <a href="{% url 'task_manager:position-create' %}" class="btn-color btn link-to-page">
+      Create
+    </a>
+  </h1>
+
+  {% if position_list %}
+    <ul>
+      {% for position in position_list %}
+        <li>{{ position }}</li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>There are currently no positions.</p>
+  {% endif %}
+{% endblock %}

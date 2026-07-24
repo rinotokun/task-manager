@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>
+    Task Types
+    <a href="{% url 'task_manager:tasktype-create' %}" class="btn-color btn link-to-page">
+      Create
+    </a>
+  </h1>
+  {% if tasktype_list %}
+    <ul>
+      {% for tasktype in tasktype_list %}
+        <li>{{ tasktype }}</li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>There are currently no task types.</p>
+  {% endif %}
+{% endblock %}
