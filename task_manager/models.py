@@ -63,6 +63,15 @@ class Task(models.Model):
         blank=True
     )
 
+    def priority_color(self):
+        priority_color_map = {
+            "Urgent": "danger",
+            "High": "warning",
+            "Medium": "info",
+            "Low": "secondary",
+        }
+        return priority_color_map.get(self.priority, "secondary")
+
     class Meta:
         ordering = ["-deadline"]
 

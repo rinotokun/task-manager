@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+  <p class="display-1">Tasks</p>
+  {% if task_list %}
+    {% for task in task_list %}
+      <div class="card m-4" style="width: 18rem; display: inline-block;">
+        <div class="card-body">
+          <h5 class="card-title">
+            {{ task.name }}
+          </h5>
+          <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill text-bg-{{ task.priority_color }} fs-6">
+            {{ task.priority }}
+          </span>
+          <p class="card-text mt-3">{{ task.description }}</p>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            <img src="{% static 'images/calendar.svg' %}" alt="">
+            {{ task.deadline }}
+          </li>
+          <li class="list-group-item">
+            <img src="{% static 'images/tag.svg' %}" alt="">
+            {{ task.task_type }}
+          </li>
+          <li class="list-group-item">
+            <div class="dropdown">
+              <button class="dropdown-worker dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                <img src="{% static 'images/user.svg' %}" alt="">
+                {{ task.assignees.count }}
+              </button>
+              <ul class="dropdown-menu">
+                {% for worker in task.assignees.all %}
+                  <li><a href="#" class="dropdown-item">{{ worker }}</a></li>
+                {% endfor %}
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </div>
+    {% endfor %}
+  {% else %}
+    <p>There are currently no tasks.</p>
+  {% endif %}
+{% endblock content %}

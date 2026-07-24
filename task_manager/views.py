@@ -22,6 +22,17 @@ def index(request):
     )
 
 
+class TaskListView(LoginRequiredMixin, generic.ListView):
+    model = Task
+    paginate_by = 5
+
+    def get_queryset(self):
+        queryset = Task.objects.select_related(
+            "task_type"
+        ).prefetch_related("assignees")
+        return queryset
+
+
 class TaskTypeListView(LoginRequiredMixin, generic.ListView):
     model = TaskType
     queryset = TaskType.objects.prefetch_related("tasks")
