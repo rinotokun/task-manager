@@ -14,3 +14,54 @@ body {
 .bg-color-sidebar {
     background-color: #4C7F4C;
 }
+
+.login-vh {
+  min-height: calc(100vh - 3rem);
+}
+
+.login-vh .form-control {
+  border: 0;
+  border-bottom: 1px solid #ccc;
+  border-radius: 0;
+  padding-left: 0;
+  background-color: transparent;
+  box-shadow: none;
+}
+
+.login-vh .form-control:focus {
+  border-bottom-color: #4C7F4C;
+  box-shadow: none;
+}
+
+.login-vh .btn-primary {
+  width: 100%;
+  padding: 15px;
+  border: 0;
+  border-radius: 6px;
+  background-color: #4C7F4C;
+  font-size: 1.1rem;
+}
+
+.login-vh .btn-primary:hover {
+  background-color: #395F39;
+}
+
+.login-vh .asteriskField {
+  display: none;
+}
+
+.logout-btn {
+    background-color: transparent;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+.dropdown-bg-color {
+    background-color: #395F39;
+}
+
+.dropdown-item:hover {
+    background-color: #99bf99c8;
+}

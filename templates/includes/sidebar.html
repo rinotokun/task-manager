@@ -34,11 +34,16 @@
         <img src="#" alt="" width="32" height="32" class="rounded-circle me-2">
         <strong>{{ user.username }}</strong>
       </a>
-      <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
-        <li><a class="dropdown-item" href="#">Edit profile</a></li>
-        <li><a class="dropdown-item" href="#">Profile</a></li>
+      <ul class="dropdown-bg-color dropdown-menu text-small shadow" aria-labelledby="dropdownUser1">
+        <li><a class="dropdown-item text-white" href="#">Edit profile</a></li>
+        <li><a class="dropdown-item text-white" href="#">Profile</a></li>
         <li><hr class="dropdown-divider"></li>
-        <li><a class="dropdown-item" href="#">Sign out</a></li>
+        <li>
+          <form class="dropdown-item" action="{% url 'logout'%}?next={{request.path}}" method="post">
+            {% csrf_token %}
+            <input class="logout-btn" type="submit" value="Sign out">
+          </form>
+        </li>
       </ul>
     </div>
   </div>
