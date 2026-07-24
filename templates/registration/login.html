@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load static %}
+{% load crispy_forms_filters %}
+
+{% block sidebar %}
+{% endblock %}
+
+{% block content %}
+<div class="container">
+      <div class="row login-vh align-items-center">
+        <div class="col-md-6 order-md-2">
+          <img src="{% static 'images/undraw_file_sync_ot38.svg' %}" alt="Image" class="img-fluid" fetchpriority="high" decoding="sync">
+        </div>
+        <div class="col-md-6 contents">
+          <div class="row justify-content-center">
+            <div class="col-md-8">
+              <div class="mb-4">
+              <h3>Sign In to <strong>Manager Task</strong></h3>
+            </div>
+            <form method="post" action="{% url 'login' %}">
+              {% csrf_token %}
+              <div class="form-group last mb-4">
+                {{ form.username|as_crispy_field }}
+              </div>
+              <div class="form-group last mb-4">
+                {{ form.password|as_crispy_field }}
+              </div>
+              <br>
+              <input type="submit" value="Log In" class="btn text-white btn-block btn-primary">
+              <input type="hidden" name="next" value="{{ next }}">
+            </form>
+            </div>
+          </div>
+          
+        </div>
+        
+      </div>
+    </div>
+{% endblock %}
