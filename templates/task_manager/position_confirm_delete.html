@@ -1,12 +1,18 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>Delete position?</h1>
-  <br>
-  <form action="" method="post">
-    {% csrf_token %}
+  {% if position.workers.exists %}
+    <p class="display-4">You <strong style="color: red">cannot</strong> delete a position if there are employees with that position!</p>
+    <br>
+    <a href="{{ cancel_url }}" class="btn btn-secondary">Back</a>
+  {% else %}
+    <h1>Delete position?</h1>
+    <br>
+    <form action="" method="post">
+      {% csrf_token %}
 
-    <input type="submit" value="Yes" class="btn btn-danger">
-    <a href="{{ cancel_url }}" class="btn btn-secondary">Cancel</a>
-  </form>
+      <input type="submit" value="Yes" class="btn btn-danger">
+      <a href="{{ cancel_url }}" class="btn btn-secondary">Cancel</a>
+    </form>
+  {% endif %}
 {% endblock %}
