@@ -73,7 +73,7 @@ class Task(models.Model):
         return priority_color_map.get(self.priority, "secondary")
 
     class Meta:
-        ordering = ["-deadline"]
+        ordering = ["deadline"]
 
     def __str__(self):
         return f"{self.name} {self.deadline.strftime('%d.%m.%Y')}"
