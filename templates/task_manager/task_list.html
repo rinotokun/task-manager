@@ -2,13 +2,21 @@
 {% load static %}
 
 {% block content %}
-  <p class="display-1">Tasks</p>
+  <p class="display-1">Tasks
+    <a href="{% url 'task_manager:task-create' %}" class="btn-color btn link-to-page btn-lg">
+      Create
+    </a>
+  </p>
   {% if task_list %}
     {% for task in task_list %}
-      <div class="card m-4" style="width: 18rem; display: inline-block;">
-        <div class="card-body">
+      <div class="card m-4 shadow" style="width: 18rem; display: inline-block;">
+        <div class="card-body-ticket card-body">
           <h5 class="card-title">
-            {{ task.name }}
+            <strong>
+              <a href="{% url "task_manager:task-detail" pk=task.id %}?next={{ request.get_full_path }}" class="task-title-color link-offset-2 link-underline link-underline-opacity-0">
+                {{ task.name }}
+              </a>
+            </strong>
           </h5>
           <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill text-bg-{{ task.priority_color }} fs-6">
             {{ task.priority }}
@@ -24,7 +32,7 @@
             <img src="{% static 'images/tag.svg' %}" alt="">
             {{ task.task_type }}
           </li>
-          <li class="list-group-item">
+          <li class="list-group-item d-flex justify-content-between align-items-center">
             <div class="dropdown">
               <button class="dropdown-worker dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                 <img src="{% static 'images/user.svg' %}" alt="">
@@ -36,6 +44,11 @@
                 {% endfor %}
               </ul>
             </div>
+            {% if task.is_completed %}
+              <span class="badge rounded-pill text-bg-success">Completed</span>
+            {% else %}
+              <span class="badge rounded-pill text-bg-in-progress">In progress</span>
+            {% endif %}
           </li>
         </ul>
       </div>
