@@ -2,18 +2,18 @@
 {% load static %}
 
 {% block content %}
-  <p class="display-1">Tasks
+  <h1>Tasks
     <a href="{% url 'task_manager:task-create' %}" class="btn-color btn link-to-page btn-lg">
       Create
     </a>
-  </p>
+  </h1>
   {% if task_list %}
     {% for task in task_list %}
       <div class="card m-4 shadow" style="width: 18rem; display: inline-block;">
         <div class="card-body-ticket card-body">
           <h5 class="card-title">
             <strong>
-              <a href="{% url "task_manager:task-detail" pk=task.id %}?next={{ request.get_full_path }}" class="task-title-color link-offset-2 link-underline link-underline-opacity-0">
+              <a href="{% url "task_manager:task-detail" pk=task.id %}?next={{ request.get_full_path }}" class="task-title-color">
                 {{ task.name }}
               </a>
             </strong>
@@ -21,7 +21,7 @@
           <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill text-bg-{{ task.priority_color }} fs-6">
             {{ task.priority }}
           </span>
-          <p class="card-text card-text-ticket mt-3">{{ task.description }}</p>
+          <p class="card-text card-text-ticket">{{ task.description }}</p>
         </div>
         <ul class="list-group list-group-flush">
           <li class="list-group-item">
