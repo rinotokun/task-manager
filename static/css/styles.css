@@ -103,7 +103,7 @@ body {
     --bs-table-bg: transparent;
 }
 
-.card-body {
+.card-body-ticket {
     min-height: 160px;
     max-height: 160px;
 }
@@ -113,4 +113,20 @@ body {
     margin: 0;
     padding: 0;
     background-color: transparent;
+}
+
+.card-text {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.task-title-color {
+    color: #4C7F4C;
+}
+
+.text-bg-in-progress {
+    background-color: #0DCAF0;
 }
