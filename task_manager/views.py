@@ -1,7 +1,9 @@
 from django.contrib.auth.decorators import login_required
+from django.db.models import Count
 from django.shortcuts import render
 from django.views import generic
 from django.urls import reverse_lazy
+from django.utils import timezone
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 from .models import Task, TaskType, Position
@@ -10,11 +12,27 @@ from .forms import TaskForm
 
 @login_required
 def index(request):
-    num_user_tasks = request.user.tasks.count()
+    date_today = timezone.now().date()
     num_tasks = Task.objects.count()
+    completed = Task.objects.filter(is_completed=True).count()
+    overdue = Task.objects.filter(
+        deadline__lt=date_today,
+        is_completed=False
+    ).count()
+    upcoming_deadlines = Task.objects.filter(
+        is_completed=False
+    ).order_by("deadline")[:5]
+    tasks_by_priority = Task.objects.values(
+        "priority"
+    ).annotate(count=Count("id"))
     context = {
-        "num_user_tasks": num_user_tasks,
         "num_tasks": num_tasks,
+        "completed": completed,
+        "in_progress": num_tasks - completed,
+        "overdue": overdue,
+        "date_today": date_today.strftime("%A, %d %B %Y"),
+        "upcoming_deadlines": upcoming_deadlines,
+        "tasks_by_priority": tasks_by_priority,
     }
     return render(
         request,
