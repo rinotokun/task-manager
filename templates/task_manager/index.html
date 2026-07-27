@@ -1,36 +1,119 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block content %}
-  <div class="card" style="width: 12rem; margin: 10px 30px;">
+  <div class="card hero-card">
     <div class="card-body">
-      <h4>
-        Hi,
+      <h3>
+        Hi 
         {% if user.first_name and user.last_name %}
           {{ user.first_name }} {{ user.last_name }}
         {% else %}
           {{ user.username }}
         {% endif %}
-      </h4>
+        !
+        <span class="link-to-page">{{ date_today }}</span>
+      </h3>
+      <div class="card-text">
+        This is what happens to the tasks
+      </div>
     </div>
   </div>
-  <div class="text-center" style="margin-top: 15vh;">
-    <h1>Welcome to <strong style="color: #4C7F4C;">Task Manager</strong></h1>
-  </div>
-  <br>
-  <div class="d-flex justify-content-center gap-3 row row-cols-1 row-cols-md-2 mb-2 text-center">
-    <div class="col" style="width: 300px;">
-      <div class="card mx-auto card mb-4 rounded-3 shadow-sm">
-        <div class="card-body">
-          <h3>Tasks in system</h3>
-          <span class="fs-4">{{ num_tasks }}</span>
+  <div class="row row-cols-2 row-cols-lg-4 g-3 mt-2">
+    <div class="col">
+      <div class="card stat-card border-start border-4 border-primary shadow-sm h-100">
+        <div class="card-body d-flex justify-content-between align-items-center">
+          <div>
+            <div class="text-body-secondary">Total tasks</div>
+            <div class="display-4 fw-bold text-primary-emphasis">
+              {{ num_tasks }}
+            </div>
+          </div>
+          <span class="d-inline-flex align-items-center justify-content-center rounded-circle bg-primary-subtle" style="width: 56px; height: 56px;">
+            <img src="{% static 'images/bookmark.svg' %}" alt="" width="24">
+          </span>
         </div>
       </div>
     </div>
-    <div class="col" style="width: 300px;">
-      <div class="card mb-4 rounded-3 shadow-sm">
-        <div class="card-body">
-          <h3>Your tasks</h3>
-          <span class="fs-4">{{ num_user_tasks }}</span>
+    <div class="col">
+      <div class="card stat-card border-start border-4 border-success shadow-sm h-100">
+        <div class="card-body d-flex justify-content-between align-items-center">
+          <div>
+            <div class="text-body-secondary">Completed</div>
+            <div class="display-4 fw-bold text-success-emphasis">
+              {{ completed }}
+            </div>
+          </div>
+          <span class="d-inline-flex align-items-center justify-content-center rounded-circle bg-success-subtle" style="width: 56px; height: 56px;">
+            <img src="{% static 'images/check-circle.svg' %}" alt="" width="24">
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card stat-card border-start border-4 border-info shadow-sm h-100">
+        <div class="card-body d-flex justify-content-between align-items-center">
+          <div>
+            <div class="text-body-secondary">In progress</div>
+            <div class="display-4 fw-bold text-info-emphasis">
+              {{ in_progress }}
+            </div>
+          </div>
+          <span class="d-inline-flex align-items-center justify-content-center rounded-circle bg-info-subtle" style="width: 56px; height: 56px;">
+            <img src="{% static 'images/clock.svg' %}" alt="" width="24">
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card stat-card border-start border-4 border-danger shadow-sm h-100">
+        <div class="card-body d-flex justify-content-between align-items-center">
+          <div>
+            <div class="text-body-secondary">Overdue</div>
+            <div class="display-4 fw-bold text-danger-emphasis">
+              {{ overdue }}
+            </div>
+          </div>
+          <span class="d-inline-flex align-items-center justify-content-center rounded-circle bg-danger-subtle" style="width: 56px; height: 56px;">
+            <img src="{% static 'images/x.svg' %}" alt="" width="24">
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="container px-4">
+    <div class="row gx-5">
+      <div class="col">
+        <div class="card mx-auto card mb-4 rounded-3 shadow fs-5">
+          <div class="card-body">
+            <div class="card-title">
+              <h3 class="text-center">Requires attention</h3>
+            </div>
+            <div class="card-text">
+              <ul class="list-group list-group-flush">
+                {% for task in upcoming_deadlines %}
+                  <li class="list-group-item">{{ task.name }} <span class="link-to-page">{{ task.deadline }}</span></li>
+                {% endfor %}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card mx-auto card mb-4 rounded-3 shadow">
+          <div class="card-body">
+            <div class="card-title">
+              <h3 class="text-center">Number of tasks by priority</h3>
+            </div>
+            <div class="card-text fs-5">
+              <ul class="list-group list-group-flush">
+                {% for task in tasks_by_priority %}
+                  <li class="list-group-item">{{ task.priority}}: {{task.count}}</li>
+                {% endfor %}
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
     </div>
