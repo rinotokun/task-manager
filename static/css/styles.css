@@ -144,3 +144,18 @@ body {
 .text-bg-in-progress {
     background-color: #0DCAF0;
 }
+
+.hero-card {
+    color: #fff;
+    background: linear-gradient(135deg, #4C7F4C, #6ba36b);
+}
+
+.stat-card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border-left: 4px solid var(--bs-success);
+}
+
+.stat-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15) !important;
+}
