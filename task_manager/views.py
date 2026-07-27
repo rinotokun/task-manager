@@ -1,5 +1,5 @@
 from django.contrib.auth.decorators import login_required
-from django.db.models import Count
+from django.db.models import Count, Case, Value, When
 from django.shortcuts import render
 from django.views import generic
 from django.urls import reverse_lazy
@@ -24,7 +24,15 @@ def index(request):
     ).order_by("deadline")[:5]
     tasks_by_priority = Task.objects.values(
         "priority"
-    ).annotate(count=Count("id"))
+    ).annotate(
+        count=Count("id"),
+        priority_level=Case(
+            When(priority=Task.Priority.URGENT, then=Value(1)),
+            When(priority=Task.Priority.HIGH, then=Value(2)),
+            When(priority=Task.Priority.MEDIUM, then=Value(3)),
+            When(priority=Task.Priority.LOW, then=Value(4))
+        )
+    ).order_by("priority_level")
     context = {
         "num_tasks": num_tasks,
         "completed": completed,
