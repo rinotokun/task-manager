@@ -14,7 +14,7 @@ from .models import (
 class WorkerAdmin(UserAdmin):
     list_display = UserAdmin.list_display + ("position",)
     fieldsets = UserAdmin.fieldsets + (
-        (("Additional info", {"fields": ("position",)}),)
+        (("Additional info", {"fields": ("position", "avatar",)}),)
     )
     add_fieldsets = UserAdmin.add_fieldsets + (
         (
@@ -25,6 +25,7 @@ class WorkerAdmin(UserAdmin):
                         "first_name",
                         "last_name",
                         "position",
+                        "avatar",
                     )
                 },
             ),
