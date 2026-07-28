@@ -120,6 +120,28 @@ class TaskTypeCreateView(LoginRequiredMixin, generic.CreateView):
     fields = "__all__"
     success_url = reverse_lazy("task_manager:tasktype-list")
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["cancel_url"] = self.request.GET.get(
+            "next",
+            reverse_lazy("task_manager:tasktype-list")
+        )
+        return context
+
+
+class TaskTypeUpdateView(LoginRequiredMixin, generic.UpdateView):
+    model = TaskType
+    fields = "__all__"
+    success_url = reverse_lazy("task_manager:tasktype-list")
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["cancel_url"] = self.request.GET.get(
+            "next",
+            reverse_lazy("task_manager:tasktype-list")
+        )
+        return context
+
 
 class TaskTypeDeleteView(LoginRequiredMixin, generic.DeleteView):
     model = TaskType
@@ -144,6 +166,28 @@ class PositionCreateView(LoginRequiredMixin, generic.CreateView):
     model = Position
     fields = "__all__"
     success_url = reverse_lazy("task_manager:position-list")
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["cancel_url"] = self.request.GET.get(
+            "next",
+            reverse_lazy("task_manager:position-list")
+        )
+        return context
+
+
+class PositionUpdateView(LoginRequiredMixin, generic.UpdateView):
+    model = Position
+    fields = "__all__"
+    success_url = reverse_lazy("task_manager:position-list")
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["cancel_url"] = self.request.GET.get(
+            "next",
+            reverse_lazy("task_manager:position-list")
+        )
+        return context
 
 
 class PositionDeleteView(LoginRequiredMixin, generic.DeleteView):
