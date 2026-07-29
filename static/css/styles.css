@@ -160,10 +160,25 @@ body {
     box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15) !important;
 }
 
-.login-error > .errorlist {
-    background-color: #fa0303b9;
-    list-style: none;
-    padding: 5px;
-    width: 350px;
+.worker-img {
+    height: 200px;
+    width: 100%;
+}
+
+.worker-title-color {
+    color: #000;
+    text-decoration: none;
+    margin: 0;
+    padding: 2px;
+    border-radius: 5px;
+    display: inline-block;
+    transition: all 0.3s ease-in-out;
+}
+
+.worker-title-color:hover {
+    color: #fff;
+    margin: 0;
+    background-color: #4C7F4C;
+    padding: 2px;
     border-radius: 5px;
 }

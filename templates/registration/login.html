@@ -18,10 +18,7 @@
               <h2>Sign In to <strong style="color: #4C7F4C;">Task Manager</strong></h2>
             </div>
             {% if form.non_field_errors %}
-              <div class="login-error">
-
-                {{ form.non_field_errors }}
-              </div>
+              {{ form.non_field_errors }}
             {% endif %}
             <form method="post" action="{% url 'login' %}" novalidate>
               {% csrf_token %}

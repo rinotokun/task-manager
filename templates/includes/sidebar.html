@@ -25,7 +25,7 @@
         </a>
       </li>
       <li>
-        <a href="#" class="nav-link-active fs-5 nav-link text-white">
+        <a href="{% url 'task_manager:worker-list' %}" class="nav-link-active fs-5 nav-link text-white">
           Workers
         </a>
       </li>
@@ -41,8 +41,8 @@
         <strong>{{ user.username }}</strong>
       </a>
       <ul class="dropdown-bg-color dropdown-menu text-small shadow" aria-labelledby="dropdownUser1">
-        <li><a class="dropdown-item text-white" href="#">Edit profile</a></li>
-        <li><a class="dropdown-item text-white" href="#">Profile</a></li>
+        <li><a class="dropdown-item text-white" href="{% url 'task_manager:worker-update' pk=user.id %}?next={{ request.get_full_path|urlencode }}">Edit profile</a></li>
+        <li><a class="dropdown-item text-white" href="{% url 'task_manager:worker-detail' pk=user.id %}?next={{ request.get_full_path|urlencode }}">Profile</a></li>
         <li><hr class="dropdown-divider"></li>
         <li>
           <form class="dropdown-item" action="{% url 'logout'%}?next={{request.path}}" method="post">

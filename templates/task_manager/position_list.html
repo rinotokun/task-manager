@@ -3,7 +3,7 @@
 {% block content %}
   <h1>
     Positions
-    <a href="{% url 'task_manager:position-create' %}?next={{ request.get_full_path }}" class="btn-color btn link-to-page btn-lg">
+    <a href="{% url 'task_manager:position-create' %}?next={{ request.get_full_path|urlencode }}" class="btn-color btn link-to-page btn-lg">
       Create
     </a>
   </h1>
@@ -23,8 +23,8 @@
         <tr>
           <td>{{ position }}</td>
           <td>{{ position.workers.count }}</td>
-          <td><a href="{% url 'task_manager:position-update' pk=position.id %}?next={{ request.get_full_path }}" class="btn btn-sm btn-secondary">Update</a></td>
-          <td><a href="{% url 'task_manager:position-delete' pk=position.id %}?next={{ request.get_full_path }}" class="btn btn-sm btn-danger">Delete</a></td>
+          <td><a href="{% url 'task_manager:position-update' pk=position.id %}?next={{ request.get_full_path|urlencode }}" class="btn btn-sm btn-secondary">Update</a></td>
+          <td><a href="{% url 'task_manager:position-delete' pk=position.id %}?next={{ request.get_full_path|urlencode }}" class="btn btn-sm btn-danger">Delete</a></td>
         </tr>
       {% endfor %}
       </tbody>

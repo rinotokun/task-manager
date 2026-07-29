@@ -3,7 +3,7 @@
 
 {% block content %}
   <h1>Tasks
-    <a href="{% url 'task_manager:task-create' %}" class="btn-color btn link-to-page btn-lg">
+    <a href="{% url 'task_manager:task-create' %}?next={{ request.get_full_path|urlencode }}" class="btn-color btn link-to-page btn-lg">
       Create
     </a>
   </h1>
@@ -13,7 +13,7 @@
         <div class="card-body-ticket card-body">
           <h5 class="card-title">
             <strong>
-              <a href="{% url "task_manager:task-detail" pk=task.id %}?next={{ request.get_full_path }}" class="task-title-color">
+              <a href="{% url "task_manager:task-detail" pk=task.id %}?next={{ request.get_full_path|urlencode }}" class="task-title-color">
                 {{ task.name }}
               </a>
             </strong>
@@ -39,9 +39,13 @@
                 {{ task.assignees.count }}
               </button>
               <ul class="dropdown-menu">
-                {% for worker in task.assignees.all %}
-                  <li><a href="#" class="dropdown-item">{{ worker }}</a></li>
-                {% endfor %}
+                {% if task.assignees.all %}
+                  {% for worker in task.assignees.all %}
+                    <li><a href="{% url 'task_manager:worker-detail' pk=worker.id %}" class="dropdown-item">{{ worker }}</a></li>
+                  {% endfor %}
+                {% else %}
+                  <li class="text-center"><i>No assigned</i></li>
+                {% endif %}
               </ul>
             </div>
             {% if task.is_completed %}
