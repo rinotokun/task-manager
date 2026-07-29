@@ -1,0 +1,133 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+  <div class="row row-cols-7 g-5">
+    <div class="col-3">
+      {% if worker.avatar %}
+      <img src="{{ worker.avatar.url }}" alt="" width="300" height="300" class="object-fit-cover rounded-circle me-2 border border-success-subtle border-5">
+      {% else %}
+      <img src="{% static 'images/user.svg' %}" alt="" width="300" height="300" class="object-fit-cover rounded-circle me-2 border border-success-subtle border-5">
+      {% endif %}
+    </div>
+    <div class="col-8 ms-4">
+      <div class="link-to-page">
+        <a href="{% url 'task_manager:worker-update' pk=worker.id %}?next={{ request.get_full_path|urlencode }}" class="btn-secondary btn btn-lg">
+          Edit
+        </a>
+        <a href="{% url 'task_manager:worker-delete' pk=worker.id %}?next={{ request.get_full_path|urlencode }}" class="btn-danger btn btn-lg">
+          Delete
+        </a>
+      </div>
+      {% if worker.first_name and worker.last_name %}
+        <h1>{{ worker.first_name }} {{ worker.last_name }} ({{ worker.username }})</h1>
+      {% else %}
+        <h1>{{ worker.username }}</h1>
+      {% endif %}
+      <span class="mb-3 badge rounded-pill text-bg-info">Position: {{ worker.position }}</span>
+      {% if worker.email %}
+        <span class="mb-3 badge rounded-pill text-bg-info ms-3">Email: {{ worker.email }}</span>
+      {% endif %}
+      <div class="row row-cols-2 row-cols-lg-3 g-3">
+        <div class="col">
+          <div class="card stat-card border-start border-4 border-primary shadow-sm h-100">
+            <div class="card-body d-flex justify-content-between align-items-center">
+              <div>
+                <div class="text-body-secondary">Assigned tasks</div>
+                <div class="display-4 fw-bold text-primary-emphasis">
+                  {{ assigned_tasks }}
+                </div>
+              </div>
+              <span class="d-inline-flex align-items-center justify-content-center rounded-circle bg-primary-subtle" style="width: 56px; height: 56px;">
+                <img src="{% static 'images/bookmark.svg' %}" alt="" width="24">
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card stat-card border-start border-4 border-success shadow-sm h-100">
+            <div class="card-body d-flex justify-content-between align-items-center">
+              <div>
+                <div class="text-body-secondary">Completed tasks</div>
+                <div class="display-4 fw-bold text-success-emphasis">
+                  {{ completed_tasks }}
+                </div>
+              </div>
+              <span class="d-inline-flex align-items-center justify-content-center rounded-circle bg-success-subtle" style="width: 56px; height: 56px;">
+                <img src="{% static 'images/check-circle.svg' %}" alt="" width="24">
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card stat-card border-start border-4 border-info shadow-sm h-100">
+            <div class="card-body d-flex justify-content-between align-items-center">
+              <div>
+                <div class="text-body-secondary">Tasks in progress</div>
+                <div class="display-4 fw-bold text-info-emphasis">
+                  {{ tasks_in_progress }}
+                </div>
+              </div>
+              <span class="d-inline-flex align-items-center justify-content-center rounded-circle bg-info-subtle" style="width: 56px; height: 56px;">
+                <img src="{% static 'images/clock.svg' %}" alt="" width="24">
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr>
+  {% if page_obj %}
+    {% for task in page_obj %}
+      <div class="card m-4 shadow" style="width: 18rem; display: inline-block;">
+        <div class="card-body-ticket card-body">
+          <h5 class="card-title">
+            <strong>
+              <a href="{% url "task_manager:task-detail" pk=task.id %}?next={{ request.get_full_path|urlencode }}" class="task-title-color">
+                {{ task.name }}
+              </a>
+            </strong>
+          </h5>
+          <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill text-bg-{{ task.priority_color }} fs-6">
+            {{ task.priority }}
+          </span>
+          <p class="card-text card-text-ticket">{{ task.description }}</p>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            <img src="{% static 'images/calendar.svg' %}" alt="">
+            {{ task.deadline }}
+          </li>
+          <li class="list-group-item">
+            <img src="{% static 'images/tag.svg' %}" alt="">
+            {{ task.task_type }}
+          </li>
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            <div class="dropdown">
+              <button class="dropdown-worker dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                <img src="{% static 'images/user.svg' %}" alt="">
+                {{ task.assignees.count }}
+              </button>
+              <ul class="dropdown-menu">
+                {% for worker in task.assignees.all %}
+                  <li><a href="{% url 'task_manager:worker-detail' pk=worker.id %}" class="dropdown-item">{{ worker }}</a></li>
+                {% endfor %}
+              </ul>
+            </div>
+            {% if task.is_completed %}
+              <span class="badge rounded-pill text-bg-success">Completed</span>
+            {% else %}
+              <span class="badge rounded-pill text-bg-in-progress">In progress</span>
+            {% endif %}
+          </li>
+        </ul>
+      </div>
+    {% endfor %}
+  {% else %}
+    <h3>There are no tasks</h3>
+  {% endif %}
+  <div class="container mt-5">
+    <a href="{{ back_url }}" class="link-to-page btn-color btn btn-lg">Back</a>
+  </div>
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+  <h1>
+    Workers
+    <a href="{% url 'task_manager:worker-create' %}?next={{ request.get_full_path|urlencode }}" class="btn-color btn link-to-page btn-lg">
+      Create
+    </a>
+  </h1>
+  <div class="row row-cols-2 row-cols-lg-4 g-3 mt-2 mb-4">
+    {% for worker in worker_list %}
+      <div class="col">
+        <div class="card h-100">
+          {% if worker.avatar %}
+            <img src="{{ worker.avatar.url }}" alt="" class="worker-img object-fit-cover card-img-top">
+          {% else %}
+            <img src="{% static 'images/user.svg' %}" alt="" class="worker-img object-fit-contain card-img-top">
+          {% endif %}
+          <div class="card-body">
+            <div class="card-title">
+              {% if worker.first_name and worker.last_name %}
+                <a href="{% url "task_manager:worker-detail" pk=worker.id %}?next={{ request.get_full_path|urlencode }}" class="worker-title-color">
+                  <strong>{{ worker.first_name }} {{ worker.last_name }} ({{ worker.username }})</strong>
+                </a>
+              {% else %}
+                <a href="{% url "task_manager:worker-detail" pk=worker.id %}?next={{ request.get_full_path|urlencode }}" class="worker-title-color">
+                  <strong>{{ worker.username }}</strong>
+                </a>
+              {% endif %}
+            </div>
+            <div class="card-subtitle mb-2 text-body-secondary">
+              {{ worker.position }}
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+{% endblock %}
