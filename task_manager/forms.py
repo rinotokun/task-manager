@@ -1,4 +1,5 @@
 from django import forms
+from django_select2.forms import Select2MultipleWidget
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 
@@ -8,7 +9,19 @@ from .models import Task
 class TaskForm(forms.ModelForm):
     assignees = forms.ModelMultipleChoiceField(
         queryset=get_user_model().objects.all(),
-        widget=forms.CheckboxSelectMultiple,
+        widget=Select2MultipleWidget(
+            attrs={
+                "data-theme": "bootstrap-5"
+            }
+        ),
+    )
+    deadline = forms.DateField(
+        widget=forms.DateInput(
+            format="%Y-%m-%d",
+            attrs={
+                "type": "date",
+            }
+        ),
     )
 
     class Meta:

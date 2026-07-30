@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     "crispy_forms",
     "debug_toolbar",
     "task_manager",
+    "django_select2",
 ]
 
 MIDDLEWARE = [
