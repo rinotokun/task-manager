@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load crispy_forms_filters %}
 
 {% block content %}
   <h1>
@@ -7,6 +8,12 @@
       Create
     </a>
   </h1>
+  <form action="" method="get" style="width: 380px;">
+    <div class="input-group">
+      {{ search_form.name }}
+      <input type="submit" value="Search" class="btn btn-outline-success">
+    </div>
+  </form>
   <br>
   {% if tasktype_list %}
   <table class="table-bg-color table" style="width: 550px;">
