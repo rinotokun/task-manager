@@ -8,6 +8,12 @@
       Create
     </a>
   </h1>
+  <form action="" method="get" style="width: 380px;">
+    <div class="input-group">
+      {{ search_form.username }}
+      <input type="submit" value="Search" class="btn btn-outline-success">
+    </div>
+  </form>
   <div class="row row-cols-2 row-cols-lg-4 g-3 mt-2 mb-4">
     {% for worker in worker_list %}
       <div class="col">

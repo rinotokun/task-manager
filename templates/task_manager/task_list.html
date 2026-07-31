@@ -7,6 +7,13 @@
       Create
     </a>
   </h1>
+  <form action="" method="get" style="width: 380px;">
+    <div class="input-group">
+      {{ search_form.name }}
+      <input type="submit" value="Search" class="btn btn-outline-success">
+    </div>
+  </form>
+  <br>
   {% if task_list %}
     {% for task in task_list %}
       <div class="card m-4 shadow" style="width: 18rem; display: inline-block;">

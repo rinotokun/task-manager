@@ -11,7 +11,15 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from urllib.parse import unquote, urlparse, parse_qs
 
 from .models import Task, TaskType, Position
-from .forms import TaskForm, WorkerCreationForm, WorkerUpdateForm
+from .forms import (
+    TaskForm,
+    WorkerCreationForm,
+    WorkerUpdateForm,
+    TaskTypeSearchForm,
+    PositionSearchForm,
+    TaskSearchForm,
+    WorkerSearchForm,
+)
 
 
 @login_required
@@ -57,10 +65,18 @@ class TaskListView(LoginRequiredMixin, generic.ListView):
     model = Task
     paginate_by = 5
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["search_form"] = TaskSearchForm()
+        return context
+
     def get_queryset(self):
         queryset = Task.objects.select_related(
             "task_type"
         ).prefetch_related("assignees")
+        name = self.request.GET.get("name")
+        if name:
+            return queryset.filter(name__icontains=name)
         return queryset
 
 
@@ -132,8 +148,19 @@ class TaskDeleteView(LoginRequiredMixin, generic.DeleteView):
 
 class TaskTypeListView(LoginRequiredMixin, generic.ListView):
     model = TaskType
-    queryset = TaskType.objects.prefetch_related("tasks")
     paginate_by = 5
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["search_form"] = TaskTypeSearchForm()
+        return context
+
+    def get_queryset(self):
+        queryset = TaskType.objects.prefetch_related("tasks")
+        name = self.request.GET.get("name")
+        if name:
+            return queryset.filter(name__icontains=name)
+        return queryset
 
 
 class TaskTypeCreateView(LoginRequiredMixin, generic.CreateView):
@@ -179,8 +206,19 @@ class TaskTypeDeleteView(LoginRequiredMixin, generic.DeleteView):
 
 class PositionListView(LoginRequiredMixin, generic.ListView):
     model = Position
-    queryset = Position.objects.prefetch_related("workers")
     paginate_by = 5
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["search_form"] = PositionSearchForm()
+        return context
+
+    def get_queryset(self):
+        queryset = Position.objects.prefetch_related("workers")
+        name = self.request.GET.get("name")
+        if name:
+            return queryset.filter(name__icontains=name)
+        return queryset
 
 
 class PositionCreateView(LoginRequiredMixin, generic.CreateView):
@@ -232,7 +270,15 @@ class WorkerListView(LoginRequiredMixin, generic.ListView):
         queryset = get_user_model().objects.select_related(
             "position"
         ).prefetch_related("tasks")
+        username = self.request.GET.get("username")
+        if username:
+            return queryset.filter(username__icontains=username)
         return queryset
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["search_form"] = WorkerSearchForm()
+        return context
 
 
 class WorkerDetailView(LoginRequiredMixin, generic.DetailView):
@@ -255,7 +301,9 @@ class WorkerDetailView(LoginRequiredMixin, generic.DetailView):
             is_completed=True
         ).count()
         tasks_in_progress = assigned_tasks - completed_tasks
-        tasks = self.object.tasks.all().order_by("deadline")
+        tasks = self.object.tasks.select_related(
+            "task_type"
+        ).prefetch_related("assignees").order_by("deadline")
         paginator = Paginator(tasks, 3)
         page_number = self.request.GET.get("page")
         page_obj = paginator.get_page(page_number)
