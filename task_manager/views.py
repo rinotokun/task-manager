@@ -15,9 +15,7 @@ from .forms import (
     TaskForm,
     WorkerCreationForm,
     WorkerUpdateForm,
-    TaskTypeSearchForm,
-    PositionSearchForm,
-    TaskSearchForm,
+    SearchForm,
     WorkerSearchForm,
 )
 
@@ -67,7 +65,10 @@ class TaskListView(LoginRequiredMixin, generic.ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["search_form"] = TaskSearchForm()
+        name = self.request.GET.get("name")
+        context["search_form"] = SearchForm(
+            initial={"name": name}
+        )
         return context
 
     def get_queryset(self):
@@ -152,7 +153,10 @@ class TaskTypeListView(LoginRequiredMixin, generic.ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["search_form"] = TaskTypeSearchForm()
+        name = self.request.GET.get("name")
+        context["search_form"] = SearchForm(
+            initial={"name": name}
+        )
         return context
 
     def get_queryset(self):
@@ -210,7 +214,10 @@ class PositionListView(LoginRequiredMixin, generic.ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["search_form"] = PositionSearchForm()
+        name = self.request.GET.get("name")
+        context["search_form"] = SearchForm(
+            initial={"name": name}
+        )
         return context
 
     def get_queryset(self):
@@ -277,7 +284,10 @@ class WorkerListView(LoginRequiredMixin, generic.ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["search_form"] = WorkerSearchForm()
+        username = self.request.GET.get("username")
+        context["search_form"] = WorkerSearchForm(
+            initial={"username": username}
+        )
         return context
 
 
