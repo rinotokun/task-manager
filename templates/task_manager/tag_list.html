@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>
+    Tags
+    <a href="{% url 'task_manager:tag-create' %}?next={{ request.get_full_path|urlencode }}" class="btn-color btn link-to-page btn-lg">
+      Create
+    </a>
+  </h1>
+  <form action="" method="get" style="width: 380px;">
+    <div class="input-group">
+      {{ search_form.name }}
+      <input type="submit" value="Search" class="btn btn-outline-success">
+    </div>
+  </form>
+  <br>
+  {% if tag_list %}
+    <table class="table-bg-color table" style="width: 550px;">
+      <thead>
+        <tr>
+          <th class="text-body-secondary">Name</th>
+          <th class="text-body-secondary">Number of tasks</th>
+          <th class="text-body-secondary">Update</th>
+          <th class="text-body-secondary">Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for tag in tag_list %}
+        <tr>
+          <td>{{ tag }}</td>
+          <td>{{ tag.tasks.count }}</td>
+          <td><a href="{% url 'task_manager:tag-update' pk=tag.id %}?next={{ request.get_full_path|urlencode }}" class="btn btn-sm btn-secondary">Update</a></td>
+          <td><a href="{% url 'task_manager:tag-delete' pk=tag.id %}?next={{ request.get_full_path|urlencode }}" class="btn btn-sm btn-danger">Delete</a></td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <p>There are currently no tags.</p>
+  {% endif %}
+{% endblock %}

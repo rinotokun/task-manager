@@ -57,7 +57,16 @@
       </div>
     </div>
   </div>
-  <div class="container mt-5">
+  <div class="container mt-4">
+    {% if task.tags.all %}
+      {% for tag in task.tags.all %}
+        <div class="badge rounded-pill text-bg-success fs-5">
+          {{ tag }}
+        </div>
+      {% endfor %}
+    {% endif %}
+  </div>
+  <div class="container mt-4">
     <a href="{{ back_url }}" class="btn-color btn btn-lg">Back</a>
   </div>
 {% endblock %}
