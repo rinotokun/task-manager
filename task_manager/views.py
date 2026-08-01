@@ -16,6 +16,7 @@ from .forms import (
     SearchForm,
     WorkerSearchForm,
     TaskStatusForm,
+    TaskCreateForm,
 )
 
 
@@ -100,7 +101,7 @@ class TaskDetailView(LoginRequiredMixin, generic.DetailView):
 
 class TaskCreateView(LoginRequiredMixin, generic.CreateView):
     model = Task
-    form_class = TaskForm
+    form_class = TaskCreateForm
     success_url = reverse_lazy("task_manager:task-list")
 
     def get_context_data(self, **kwargs):
