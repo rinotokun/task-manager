@@ -10,6 +10,7 @@ from .models import Task, Tag
 class TaskForm(forms.ModelForm):
     assignees = forms.ModelMultipleChoiceField(
         queryset=get_user_model().objects.all(),
+        required=False,
         widget=Select2MultipleWidget(
             attrs={
                 "data-theme": "bootstrap-5"
@@ -25,6 +26,7 @@ class TaskForm(forms.ModelForm):
         ),
     )
     tags = forms.ModelMultipleChoiceField(
+        required=False,
         queryset=Tag.objects.all(),
         widget=Select2MultipleWidget(
             attrs={
