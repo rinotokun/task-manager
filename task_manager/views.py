@@ -324,7 +324,7 @@ class WorkerDetailView(LoginRequiredMixin, generic.DetailView):
         paginator = Paginator(tasks, 3)
         page_number = self.request.GET.get("page")
         page_obj = paginator.get_page(page_number)
-        is_paginated = True if paginator.num_pages > 1 else False
+        is_paginated = paginator.num_pages > 1
         context |= {
             "back_url": back_url,
             "assigned_tasks": assigned_tasks,
