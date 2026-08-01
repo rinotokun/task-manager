@@ -15,6 +15,7 @@ from .forms import (
     WorkerUpdateForm,
     SearchForm,
     WorkerSearchForm,
+    TaskStatusForm,
 )
 
 
@@ -302,20 +303,28 @@ class WorkerDetailView(LoginRequiredMixin, generic.DetailView):
         context = super().get_context_data(**kwargs)
         back_url = self.request.GET.get(
             "next",
-            reverse_lazy("task_manager:task-list")
+            reverse_lazy("task_manager:worker-list")
         )
+        status = self.request.GET.get("status")
+        context["status_select"] = TaskStatusForm(
+            initial={"status": status}
+        )
+        tasks = self.object.tasks.select_related(
+            "task_type"
+        ).prefetch_related("assignees", "tags").order_by("deadline")
+        if status == "completed":
+            tasks = tasks.filter(is_completed=True)
+        elif status == "in_progress":
+            tasks = tasks.filter(is_completed=False)
         assigned_tasks = self.object.tasks.count()
         completed_tasks = self.object.tasks.filter(
             is_completed=True
         ).count()
         tasks_in_progress = assigned_tasks - completed_tasks
-        tasks = self.object.tasks.select_related(
-            "task_type"
-        ).prefetch_related("assignees", "tags").order_by("deadline")
         paginator = Paginator(tasks, 3)
         page_number = self.request.GET.get("page")
         page_obj = paginator.get_page(page_number)
-        is_paginated = True if assigned_tasks > 3 else False
+        is_paginated = True if paginator.num_pages > 1 else False
         context |= {
             "back_url": back_url,
             "assigned_tasks": assigned_tasks,
