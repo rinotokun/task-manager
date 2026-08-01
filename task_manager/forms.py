@@ -1,4 +1,5 @@
 from django import forms
+from django.db import models
 from django_select2.forms import Select2MultipleWidget
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
@@ -89,4 +90,20 @@ class WorkerSearchForm(forms.Form):
                 "class": "form-control"
             }
         )
+    )
+
+
+class TaskStatusForm(forms.Form):
+    class Status(models.TextChoices):
+        ALL = "all", "All"
+        COMPLETED = "completed", "Completed"
+        IN_PROGRESS = "in_progress", "In progress"
+
+    status = forms.ChoiceField(
+        required=False,
+        label="",
+        choices=Status,
+        widget=forms.Select(attrs={
+            "class": "form-select"
+        })
     )
