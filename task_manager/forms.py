@@ -3,7 +3,7 @@ from django_select2.forms import Select2MultipleWidget
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 
-from .models import Task
+from .models import Task, Tag
 
 
 class TaskForm(forms.ModelForm):
@@ -20,6 +20,14 @@ class TaskForm(forms.ModelForm):
             format="%Y-%m-%d",
             attrs={
                 "type": "date",
+            }
+        ),
+    )
+    tags = forms.ModelMultipleChoiceField(
+        queryset=Tag.objects.all(),
+        widget=Select2MultipleWidget(
+            attrs={
+                "data-theme": "bootstrap-5"
             }
         ),
     )

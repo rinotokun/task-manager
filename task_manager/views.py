@@ -8,9 +8,7 @@ from django.urls import reverse_lazy, reverse
 from django.utils import timezone
 from django.contrib.auth.mixins import LoginRequiredMixin
 
-from urllib.parse import unquote, urlparse, parse_qs
-
-from .models import Task, TaskType, Position
+from .models import Task, TaskType, Position, Tag
 from .forms import (
     TaskForm,
     WorkerCreationForm,
@@ -74,7 +72,7 @@ class TaskListView(LoginRequiredMixin, generic.ListView):
     def get_queryset(self):
         queryset = Task.objects.select_related(
             "task_type"
-        ).prefetch_related("assignees")
+        ).prefetch_related("assignees", "tags")
         name = self.request.GET.get("name")
         if name:
             return queryset.filter(name__icontains=name)
@@ -87,7 +85,7 @@ class TaskDetailView(LoginRequiredMixin, generic.DetailView):
     def get_queryset(self):
         queryset = Task.objects.select_related(
             "task_type"
-        ).prefetch_related("assignees")
+        ).prefetch_related("assignees", "tags")
         return queryset
 
     def get_context_data(self, **kwargs):
@@ -313,7 +311,7 @@ class WorkerDetailView(LoginRequiredMixin, generic.DetailView):
         tasks_in_progress = assigned_tasks - completed_tasks
         tasks = self.object.tasks.select_related(
             "task_type"
-        ).prefetch_related("assignees").order_by("deadline")
+        ).prefetch_related("assignees", "tags").order_by("deadline")
         paginator = Paginator(tasks, 3)
         page_number = self.request.GET.get("page")
         page_obj = paginator.get_page(page_number)
@@ -375,5 +373,66 @@ class WorkerDeleteView(LoginRequiredMixin, generic.DeleteView):
         context["cancel_url"] = self.request.GET.get(
             "next",
             reverse_lazy("task_manager:worker-list")
+        )
+        return context
+
+
+class TagListView(LoginRequiredMixin, generic.ListView):
+    model = Tag
+    paginate_by = 5
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        name = self.request.GET.get("name")
+        context["search_form"] = SearchForm(
+            initial={"name": name}
+        )
+        return context
+
+    def get_queryset(self):
+        queryset = Tag.objects.prefetch_related("tasks")
+        name = self.request.GET.get("name")
+        if name:
+            return queryset.filter(name__icontains=name)
+        return queryset
+
+
+class TagCreateView(LoginRequiredMixin, generic.CreateView):
+    model = Tag
+    fields = "__all__"
+    success_url = reverse_lazy("task_manager:tag-list")
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["cancel_url"] = self.request.GET.get(
+            "next",
+            reverse_lazy("task_manager:tag-list")
+        )
+        return context
+
+
+class TagUpdateView(LoginRequiredMixin, generic.UpdateView):
+    model = Tag
+    fields = "__all__"
+    success_url = reverse_lazy("task_manager:tag-list")
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["cancel_url"] = self.request.GET.get(
+            "next",
+            reverse_lazy("task_manager:tag-list")
+        )
+        return context
+
+
+class TagDeleteView(LoginRequiredMixin, generic.DeleteView):
+    model = Tag
+    success_url = reverse_lazy("task_manager:tag-list")
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["cancel_url"] = self.request.GET.get(
+            "next",
+            reverse_lazy("task_manager:tag-list")
         )
         return context
