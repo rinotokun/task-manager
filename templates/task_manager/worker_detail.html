@@ -83,7 +83,7 @@
     <div class="input-group">
       {{ status_select.status }}
       <input type="submit" value="Filter" class="btn btn-outline-success">
-      <input type="hidden" name="next" value={{ request.GET.next }}>
+      <input type="hidden" name="next" value="{{ request.GET.next }}">
     </div>
   </form>
   {% if page_obj %}
