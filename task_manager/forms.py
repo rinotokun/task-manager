@@ -3,6 +3,8 @@ from django.db import models
 from django_select2.forms import Select2MultipleWidget
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
+from django.utils import timezone
+from django.core.exceptions import ValidationError
 
 from .models import Task, Tag
 
@@ -38,6 +40,18 @@ class TaskForm(forms.ModelForm):
     class Meta:
         model = Task
         fields = "__all__"
+
+
+class TaskCreateForm(TaskForm):
+
+    def clean_deadline(self):
+        deadline = self.cleaned_data["deadline"]
+
+        if deadline < timezone.now().date():
+            raise ValidationError(
+                "The date cannot be less than the current one."
+            )
+        return deadline
 
 
 class WorkerCreationForm(UserCreationForm):
