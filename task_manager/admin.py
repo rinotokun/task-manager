@@ -7,6 +7,7 @@ from .models import (
     Position,
     Task,
     TaskType,
+    Tag
 )
 
 
@@ -48,4 +49,5 @@ class TaskAdmin(admin.ModelAdmin):
 
 admin.site.register(Position)
 admin.site.register(TaskType)
+admin.site.register(Tag)
 admin.site.unregister(Group)
