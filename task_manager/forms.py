@@ -6,7 +6,7 @@ from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.utils import timezone
 from django.core.exceptions import ValidationError
 
-from .models import Task, Tag
+from task_manager.models import Task, Tag
 
 
 class TaskForm(forms.ModelForm):
@@ -47,7 +47,7 @@ class TaskCreateForm(TaskForm):
     def clean_deadline(self):
         deadline = self.cleaned_data["deadline"]
 
-        if deadline < timezone.now().date():
+        if deadline < timezone.localdate():
             raise ValidationError(
                 "The date cannot be less than the current one."
             )
