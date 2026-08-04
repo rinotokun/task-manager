@@ -11,6 +11,7 @@ from task_manager.models import (
 
 
 class ModelTest(TestCase):
+
     def setUp(self):
         self.date_today = timezone.now().date()
         self.worker1 = get_user_model().objects.create_user(
@@ -80,6 +81,7 @@ class ModelTest(TestCase):
 
 
 class TaskPriorityColorTest(TestCase):
+
     def setUp(self):
         data_task = {
             "name": "Test task",

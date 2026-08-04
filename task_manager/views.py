@@ -8,8 +8,8 @@ from django.urls import reverse_lazy, reverse
 from django.utils import timezone
 from django.contrib.auth.mixins import LoginRequiredMixin
 
-from .models import Task, TaskType, Position, Tag
-from .forms import (
+from task_manager.models import Task, TaskType, Position, Tag
+from task_manager.forms import (
     TaskForm,
     WorkerCreationForm,
     WorkerUpdateForm,
@@ -22,7 +22,7 @@ from .forms import (
 
 @login_required
 def index(request):
-    date_today = timezone.now().date()
+    date_today = timezone.localdate()
     num_tasks = Task.objects.count()
     completed = Task.objects.filter(is_completed=True).count()
     overdue = Task.objects.filter(
