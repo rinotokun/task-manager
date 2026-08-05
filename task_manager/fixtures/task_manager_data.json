@@ -1,0 +1,945 @@
+[
+{
+    "model": "task_manager.tasktype",
+    "pk": 1,
+    "fields": {
+        "name": "Bug"
+    }
+},
+{
+    "model": "task_manager.tasktype",
+    "pk": 2,
+    "fields": {
+        "name": "New feature"
+    }
+},
+{
+    "model": "task_manager.tasktype",
+    "pk": 3,
+    "fields": {
+        "name": "Improvement"
+    }
+},
+{
+    "model": "task_manager.tasktype",
+    "pk": 4,
+    "fields": {
+        "name": "Refactoring"
+    }
+},
+{
+    "model": "task_manager.tasktype",
+    "pk": 5,
+    "fields": {
+        "name": "Breaking change"
+    }
+},
+{
+    "model": "task_manager.tasktype",
+    "pk": 6,
+    "fields": {
+        "name": "Hotfix"
+    }
+},
+{
+    "model": "task_manager.tasktype",
+    "pk": 7,
+    "fields": {
+        "name": "Documentation"
+    }
+},
+{
+    "model": "task_manager.tasktype",
+    "pk": 8,
+    "fields": {
+        "name": "QA"
+    }
+},
+{
+    "model": "task_manager.tasktype",
+    "pk": 9,
+    "fields": {
+        "name": "Chore"
+    }
+},
+{
+    "model": "task_manager.tasktype",
+    "pk": 10,
+    "fields": {
+        "name": "Spike"
+    }
+},
+{
+    "model": "task_manager.tasktype",
+    "pk": 11,
+    "fields": {
+        "name": "Design"
+    }
+},
+{
+    "model": "task_manager.tasktype",
+    "pk": 12,
+    "fields": {
+        "name": "Security"
+    }
+},
+{
+    "model": "task_manager.tasktype",
+    "pk": 13,
+    "fields": {
+        "name": "Performance"
+    }
+},
+{
+    "model": "task_manager.tasktype",
+    "pk": 14,
+    "fields": {
+        "name": "Support"
+    }
+},
+{
+    "model": "task_manager.position",
+    "pk": 1,
+    "fields": {
+        "name": "Developer"
+    }
+},
+{
+    "model": "task_manager.position",
+    "pk": 2,
+    "fields": {
+        "name": "Project Manager"
+    }
+},
+{
+    "model": "task_manager.position",
+    "pk": 3,
+    "fields": {
+        "name": "QA"
+    }
+},
+{
+    "model": "task_manager.position",
+    "pk": 4,
+    "fields": {
+        "name": "Designer"
+    }
+},
+{
+    "model": "task_manager.position",
+    "pk": 5,
+    "fields": {
+        "name": "DevOps"
+    }
+},
+{
+    "model": "task_manager.tag",
+    "pk": 2,
+    "fields": {
+        "name": "backend"
+    }
+},
+{
+    "model": "task_manager.tag",
+    "pk": 3,
+    "fields": {
+        "name": "urgent-review"
+    }
+},
+{
+    "model": "task_manager.tag",
+    "pk": 4,
+    "fields": {
+        "name": "q3-roadmap"
+    }
+},
+{
+    "model": "task_manager.tag",
+    "pk": 5,
+    "fields": {
+        "name": "landing-page-layout"
+    }
+},
+{
+    "model": "task_manager.tag",
+    "pk": 6,
+    "fields": {
+        "name": "python-refactoring"
+    }
+},
+{
+    "model": "task_manager.tag",
+    "pk": 7,
+    "fields": {
+        "name": "python"
+    }
+},
+{
+    "model": "task_manager.tag",
+    "pk": 8,
+    "fields": {
+        "name": "django"
+    }
+},
+{
+    "model": "task_manager.tag",
+    "pk": 9,
+    "fields": {
+        "name": "javascript"
+    }
+},
+{
+    "model": "task_manager.tag",
+    "pk": 10,
+    "fields": {
+        "name": "html-css"
+    }
+},
+{
+    "model": "task_manager.tag",
+    "pk": 11,
+    "fields": {
+        "name": "sql"
+    }
+},
+{
+    "model": "task_manager.tag",
+    "pk": 12,
+    "fields": {
+        "name": "rest-api"
+    }
+},
+{
+    "model": "task_manager.tag",
+    "pk": 13,
+    "fields": {
+        "name": "docker"
+    }
+},
+{
+    "model": "task_manager.tag",
+    "pk": 14,
+    "fields": {
+        "name": "bug-fix"
+    }
+},
+{
+    "model": "task_manager.tag",
+    "pk": 15,
+    "fields": {
+        "name": "hotfix"
+    }
+},
+{
+    "model": "task_manager.tag",
+    "pk": 16,
+    "fields": {
+        "name": "refactoring"
+    }
+},
+{
+    "model": "task_manager.tag",
+    "pk": 17,
+    "fields": {
+        "name": "code-review"
+    }
+},
+{
+    "model": "task_manager.tag",
+    "pk": 18,
+    "fields": {
+        "name": "testing"
+    }
+},
+{
+    "model": "task_manager.tag",
+    "pk": 19,
+    "fields": {
+        "name": "documentation"
+    }
+},
+{
+    "model": "task_manager.tag",
+    "pk": 20,
+    "fields": {
+        "name": "deployment"
+    }
+},
+{
+    "model": "task_manager.tag",
+    "pk": 21,
+    "fields": {
+        "name": "dashboard"
+    }
+},
+{
+    "model": "task_manager.tag",
+    "pk": 22,
+    "fields": {
+        "name": "search-and-filters"
+    }
+},
+{
+    "model": "task_manager.tag",
+    "pk": 23,
+    "fields": {
+        "name": "research"
+    }
+},
+{
+    "model": "task_manager.tag",
+    "pk": 24,
+    "fields": {
+        "name": "good-first-task"
+    }
+},
+{
+    "model": "task_manager.worker",
+    "fields": {
+        "password": "pbkdf2_sha256$1200000$usoUinzdCIkvEBX3r7XQnT$bK235PFKIjvyLHYc2d7t68sVPZOe+B46FbdgvDczkDw=",
+        "last_login": "2026-08-04T21:13:48.377Z",
+        "is_superuser": true,
+        "username": "admin",
+        "first_name": "John",
+        "last_name": "Smith",
+        "email": "admin@admin.com",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2026-07-23T08:07:41Z",
+        "position": 1,
+        "avatar": "workers_avatar/photo_admin.jpg",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "task_manager.worker",
+    "fields": {
+        "password": "pbkdf2_sha256$1200000$EakeRtRT6TsI4suRIS1Psl$7cxL+e6doZA13KflCNDhDUq13ANFvOPT5cw6zN4IVs8=",
+        "last_login": "2026-07-29T17:52:28.441Z",
+        "is_superuser": false,
+        "username": "holly911",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2026-07-23T21:41:57Z",
+        "position": 5,
+        "avatar": "workers_avatar/photo3.jpg",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "task_manager.worker",
+    "fields": {
+        "password": "pbkdf2_sha256$1200000$GCWcCAs4xYcbjpwnpaouax$VRm3VkRHBz+NKpBAn7mclmnXCac1fZFX2XeF3s0J2d4=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "john.smith",
+        "first_name": "John",
+        "last_name": "Smith",
+        "email": "john.smith@example.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-07-24T15:11:42Z",
+        "position": 1,
+        "avatar": "workers_avatar/photo_2.jpg",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "task_manager.worker",
+    "fields": {
+        "password": "pbkdf2_sha256$1200000$GCWcCAs4xYcbjpwnpaouax$VRm3VkRHBz+NKpBAn7mclmnXCac1fZFX2XeF3s0J2d4=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "alice.brown",
+        "first_name": "Alice",
+        "last_name": "Brown",
+        "email": "alice.brown@example.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-07-24T15:11:42.945Z",
+        "position": 3,
+        "avatar": "",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "task_manager.worker",
+    "fields": {
+        "password": "pbkdf2_sha256$1200000$GCWcCAs4xYcbjpwnpaouax$VRm3VkRHBz+NKpBAn7mclmnXCac1fZFX2XeF3s0J2d4=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "mike.jones",
+        "first_name": "Mike",
+        "last_name": "Jones",
+        "email": "mike.jones@example.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-07-24T15:11:42.946Z",
+        "position": 2,
+        "avatar": "",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "task_manager.worker",
+    "fields": {
+        "password": "pbkdf2_sha256$1200000$GCWcCAs4xYcbjpwnpaouax$VRm3VkRHBz+NKpBAn7mclmnXCac1fZFX2XeF3s0J2d4=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "sara.wilson",
+        "first_name": "Sara",
+        "last_name": "Wilson",
+        "email": "sara.wilson@example.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-07-24T15:11:42.947Z",
+        "position": 4,
+        "avatar": "",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "task_manager.worker",
+    "fields": {
+        "password": "pbkdf2_sha256$1200000$GCWcCAs4xYcbjpwnpaouax$VRm3VkRHBz+NKpBAn7mclmnXCac1fZFX2XeF3s0J2d4=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "david.lee",
+        "first_name": "David",
+        "last_name": "Lee",
+        "email": "david.lee@example.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-07-24T15:11:42.948Z",
+        "position": 5,
+        "avatar": "",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "task_manager.worker",
+    "fields": {
+        "password": "pbkdf2_sha256$1200000$GCWcCAs4xYcbjpwnpaouax$VRm3VkRHBz+NKpBAn7mclmnXCac1fZFX2XeF3s0J2d4=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "emma.taylor",
+        "first_name": "Emma",
+        "last_name": "Taylor",
+        "email": "emma.taylor@example.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-07-24T15:11:42.948Z",
+        "position": 1,
+        "avatar": "",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "task_manager.worker",
+    "fields": {
+        "password": "pbkdf2_sha256$1200000$GCWcCAs4xYcbjpwnpaouax$VRm3VkRHBz+NKpBAn7mclmnXCac1fZFX2XeF3s0J2d4=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "chris.martin",
+        "first_name": "Chris",
+        "last_name": "Martin",
+        "email": "chris.martin@example.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-07-24T15:11:42.949Z",
+        "position": 1,
+        "avatar": "",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "task_manager.worker",
+    "fields": {
+        "password": "pbkdf2_sha256$1200000$GCWcCAs4xYcbjpwnpaouax$VRm3VkRHBz+NKpBAn7mclmnXCac1fZFX2XeF3s0J2d4=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "tom.clark",
+        "first_name": "Tom",
+        "last_name": "Clark",
+        "email": "tom.clark@example.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-07-24T15:11:42.950Z",
+        "position": 5,
+        "avatar": "",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "task_manager.worker",
+    "fields": {
+        "password": "pbkdf2_sha256$1200000$GCWcCAs4xYcbjpwnpaouax$VRm3VkRHBz+NKpBAn7mclmnXCac1fZFX2XeF3s0J2d4=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "lucy.evans",
+        "first_name": "Lucy",
+        "last_name": "Evans",
+        "email": "lucy.evans@example.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-07-24T15:11:42.951Z",
+        "position": 4,
+        "avatar": "",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "task_manager.task",
+    "pk": 1,
+    "fields": {
+        "name": "Fix bug dashboard",
+        "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Alias iusto sequi placeat consequuntur ipsam, quidem atque provident libero assumenda debitis fuga dolor. Quibusdam, quos delectus.",
+        "deadline": "2026-07-31",
+        "is_completed": true,
+        "priority": "High",
+        "task_type": 1,
+        "assignees": [
+            [
+                "admin"
+            ],
+            [
+                "emma.taylor"
+            ]
+        ],
+        "tags": [
+            14,
+            20
+        ]
+    }
+},
+{
+    "model": "task_manager.task",
+    "pk": 2,
+    "fields": {
+        "name": "Fix login redirect loop",
+        "description": "Users are stuck in a redirect loop after signing in with an expired session.",
+        "deadline": "2026-07-05",
+        "is_completed": true,
+        "priority": "Urgent",
+        "task_type": 1,
+        "assignees": [
+            [
+                "john.smith"
+            ],
+            [
+                "mike.jones"
+            ]
+        ],
+        "tags": []
+    }
+},
+{
+    "model": "task_manager.task",
+    "pk": 3,
+    "fields": {
+        "name": "Add sign-in with Google button",
+        "description": "Implement OAuth login so workers can authenticate with a Google account.",
+        "deadline": "2026-08-20",
+        "is_completed": false,
+        "priority": "High",
+        "task_type": 2,
+        "assignees": [
+            [
+                "emma.taylor"
+            ],
+            [
+                "john.smith"
+            ]
+        ],
+        "tags": []
+    }
+},
+{
+    "model": "task_manager.task",
+    "pk": 4,
+    "fields": {
+        "name": "Refactor task queryset optimization",
+        "description": "Use select_related and prefetch_related on the task list to remove N+1 queries.",
+        "deadline": "2026-08-12",
+        "is_completed": false,
+        "priority": "Medium",
+        "task_type": 4,
+        "assignees": [
+            [
+                "chris.martin"
+            ],
+            [
+                "john.smith"
+            ]
+        ],
+        "tags": []
+    }
+},
+{
+    "model": "task_manager.task",
+    "pk": 5,
+    "fields": {
+        "name": "Write deployment documentation",
+        "description": "Document how to run migrations, collectstatic and start the server in production.",
+        "deadline": "2026-08-28",
+        "is_completed": false,
+        "priority": "Low",
+        "task_type": 7,
+        "assignees": [
+            [
+                "mike.jones"
+            ]
+        ],
+        "tags": []
+    }
+},
+{
+    "model": "task_manager.task",
+    "pk": 6,
+    "fields": {
+        "name": "Add tests for the pagination tag",
+        "description": "Cover query_transform with tests for keeping and dropping query parameters.",
+        "deadline": "2026-08-15",
+        "is_completed": true,
+        "priority": "Medium",
+        "task_type": 8,
+        "assignees": [
+            [
+                "alice.brown"
+            ]
+        ],
+        "tags": []
+    }
+},
+{
+    "model": "task_manager.task",
+    "pk": 7,
+    "fields": {
+        "name": "Design the dashboard layout",
+        "description": "Prepare the mockup for the worker dashboard with task counters and filters.",
+        "deadline": "2026-08-10",
+        "is_completed": true,
+        "priority": "High",
+        "task_type": 11,
+        "assignees": [
+            [
+                "lucy.evans"
+            ],
+            [
+                "sara.wilson"
+            ]
+        ],
+        "tags": []
+    }
+},
+{
+    "model": "task_manager.task",
+    "pk": 8,
+    "fields": {
+        "name": "Fix deadline timezone shift",
+        "description": "Deadlines display one day off because of a UTC to local time conversion.",
+        "deadline": "2026-07-01",
+        "is_completed": true,
+        "priority": "Urgent",
+        "task_type": 1,
+        "assignees": [
+            [
+                "chris.martin"
+            ],
+            [
+                "emma.taylor"
+            ],
+            [
+                "john.smith"
+            ]
+        ],
+        "tags": [
+            2,
+            17,
+            20,
+            8
+        ]
+    }
+},
+{
+    "model": "task_manager.task",
+    "pk": 9,
+    "fields": {
+        "name": "Upgrade Django to the latest version",
+        "description": "Bump Django and third-party packages, run the test suite and fix deprecations.",
+        "deadline": "2026-09-01",
+        "is_completed": true,
+        "priority": "Medium",
+        "task_type": 9,
+        "assignees": [
+            [
+                "david.lee"
+            ],
+            [
+                "tom.clark"
+            ]
+        ],
+        "tags": []
+    }
+},
+{
+    "model": "task_manager.task",
+    "pk": 10,
+    "fields": {
+        "name": "Patch SQL injection in search",
+        "description": "The task search builds a raw query from user input without parameter binding.",
+        "deadline": "2026-08-07",
+        "is_completed": false,
+        "priority": "Urgent",
+        "task_type": 13,
+        "assignees": [
+            [
+                "chris.martin"
+            ]
+        ],
+        "tags": []
+    }
+},
+{
+    "model": "task_manager.task",
+    "pk": 11,
+    "fields": {
+        "name": "Research background task queue",
+        "description": "Spike on Celery vs Django-Q for sending deadline reminder emails.",
+        "deadline": "2026-09-10",
+        "is_completed": false,
+        "priority": "Low",
+        "task_type": 10,
+        "assignees": [
+            [
+                "david.lee"
+            ],
+            [
+                "john.smith"
+            ]
+        ],
+        "tags": []
+    }
+},
+{
+    "model": "task_manager.task",
+    "pk": 12,
+    "fields": {
+        "name": "Improve task list load time",
+        "description": "The task list takes over two seconds to render with a few hundred rows.",
+        "deadline": "2026-08-25",
+        "is_completed": false,
+        "priority": "High",
+        "task_type": 12,
+        "assignees": [
+            [
+                "chris.martin"
+            ],
+            [
+                "emma.taylor"
+            ]
+        ],
+        "tags": [
+            20
+        ]
+    }
+},
+{
+    "model": "task_manager.task",
+    "pk": 13,
+    "fields": {
+        "name": "Hotfix broken avatar upload",
+        "description": "Avatar upload crashes on files without an extension in production.",
+        "deadline": "2026-08-06",
+        "is_completed": true,
+        "priority": "Urgent",
+        "task_type": 6,
+        "assignees": [
+            [
+                "emma.taylor"
+            ],
+            [
+                "mike.jones"
+            ]
+        ],
+        "tags": []
+    }
+},
+{
+    "model": "task_manager.task",
+    "pk": 14,
+    "fields": {
+        "name": "Add worker detail page",
+        "description": "Show a worker profile with position and the list of assigned tasks",
+        "deadline": "2026-09-05",
+        "is_completed": false,
+        "priority": "Medium",
+        "task_type": 2,
+        "assignees": [
+            [
+                "emma.taylor"
+            ],
+            [
+                "john.smith"
+            ],
+            [
+                "lucy.evans"
+            ]
+        ],
+        "tags": []
+    }
+},
+{
+    "model": "task_manager.task",
+    "pk": 15,
+    "fields": {
+        "name": "Handle breaking change in date API",
+        "description": "The date formatting API changed and now returns ISO strings instead of objects.",
+        "deadline": "2026-08-18",
+        "is_completed": false,
+        "priority": "High",
+        "task_type": 5,
+        "assignees": [
+            [
+                "emma.taylor"
+            ],
+            [
+                "sara.wilson"
+            ]
+        ],
+        "tags": []
+    }
+},
+{
+    "model": "task_manager.task",
+    "pk": 16,
+    "fields": {
+        "name": "Improve empty state messages",
+        "description": "Show a friendly message and a create button when a list has no records.",
+        "deadline": "2026-09-14",
+        "is_completed": true,
+        "priority": "Low",
+        "task_type": 3,
+        "assignees": [
+            [
+                "sara.wilson"
+            ]
+        ],
+        "tags": []
+    }
+},
+{
+    "model": "task_manager.task",
+    "pk": 17,
+    "fields": {
+        "name": "Write user guide for support team",
+        "description": "Document common workflows so the support team can onboard new users.",
+        "deadline": "2026-09-20",
+        "is_completed": true,
+        "priority": "Low",
+        "task_type": 14,
+        "assignees": [],
+        "tags": []
+    }
+},
+{
+    "model": "task_manager.task",
+    "pk": 18,
+    "fields": {
+        "name": "Add filters to the task list",
+        "description": "Let users filter tasks by status, priority and task type",
+        "deadline": "2026-08-30",
+        "is_completed": false,
+        "priority": "High",
+        "task_type": 2,
+        "assignees": [
+            [
+                "chris.martin"
+            ],
+            [
+                "david.lee"
+            ],
+            [
+                "emma.taylor"
+            ],
+            [
+                "john.smith"
+            ]
+        ],
+        "tags": []
+    }
+},
+{
+    "model": "task_manager.task",
+    "pk": 19,
+    "fields": {
+        "name": "Fix pagination on the workers page",
+        "description": "The next link disappears on the last page but prev is also missing on page one",
+        "deadline": "2026-08-11",
+        "is_completed": true,
+        "priority": "Medium",
+        "task_type": 1,
+        "assignees": [
+            [
+                "chris.martin"
+            ]
+        ],
+        "tags": []
+    }
+},
+{
+    "model": "task_manager.task",
+    "pk": 20,
+    "fields": {
+        "name": "Set up CI pipeline",
+        "description": "Run flake8 and the test suite on every push using GitHub Actions.",
+        "deadline": "2026-09-02",
+        "is_completed": false,
+        "priority": "Medium",
+        "task_type": 9,
+        "assignees": [
+            [
+                "david.lee"
+            ]
+        ],
+        "tags": [
+            14
+        ]
+    }
+},
+{
+    "model": "task_manager.task",
+    "pk": 21,
+    "fields": {
+        "name": "Review security headers",
+        "description": "Audit and configure CSP, HSTS and other security headers before launch.",
+        "deadline": "2026-09-08",
+        "is_completed": false,
+        "priority": "High",
+        "task_type": 13,
+        "assignees": [
+            [
+                "david.lee"
+            ],
+            [
+                "tom.clark"
+            ]
+        ],
+        "tags": []
+    }
+}
+]
