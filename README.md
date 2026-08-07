@@ -66,8 +66,8 @@ python manage.py runserver
 ## Live demo
 https://task-manager-5tu4.onrender.com
 
-Login: chris.martin
-Password: Test123!!!
+- **Login:** `chris.martin`
+- **Password:** `Test123!!!`
 
 ## Tests
 Tests can be run with the command `python manage.py test`.
