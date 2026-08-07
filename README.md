@@ -2,6 +2,7 @@
 A web app for managing team tasks: who is working on what, deadlines, priorities, tags.
 
 https://task-manager-5tu4.onrender.com
+
 (first load may take ~30–60s — free Render instance spins down when idle)
 
 ## Screenshots of the web application
