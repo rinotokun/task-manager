@@ -296,8 +296,8 @@
 {
     "model": "task_manager.worker",
     "fields": {
-        "password": "pbkdf2_sha256$1200000$usoUinzdCIkvEBX3r7XQnT$bK235PFKIjvyLHYc2d7t68sVPZOe+B46FbdgvDczkDw=",
-        "last_login": "2026-08-04T21:13:48.377Z",
+        "password": "pbkdf2_sha256$1200000$gOvztVkqwxW7LeTCpcWY3v$dW66h8s8TtRKOItoYuZNFQvfthz0g0dRavTiTtPVTds=",
+        "last_login": "2026-08-07T11:58:17.929Z",
         "is_superuser": true,
         "username": "admin",
         "first_name": "John",
@@ -307,7 +307,7 @@
         "is_active": true,
         "date_joined": "2026-07-23T08:07:41Z",
         "position": 1,
-        "avatar": "workers_avatar/photo_admin.jpg",
+        "avatar": "",
         "groups": [],
         "user_permissions": []
     }
@@ -326,7 +326,7 @@
         "is_active": true,
         "date_joined": "2026-07-23T21:41:57Z",
         "position": 5,
-        "avatar": "workers_avatar/photo3.jpg",
+        "avatar": "",
         "groups": [],
         "user_permissions": []
     }
@@ -345,7 +345,7 @@
         "is_active": true,
         "date_joined": "2026-07-24T15:11:42Z",
         "position": 1,
-        "avatar": "workers_avatar/photo_2.jpg",
+        "avatar": "",
         "groups": [],
         "user_permissions": []
     }
@@ -448,8 +448,8 @@
 {
     "model": "task_manager.worker",
     "fields": {
-        "password": "pbkdf2_sha256$1200000$GCWcCAs4xYcbjpwnpaouax$VRm3VkRHBz+NKpBAn7mclmnXCac1fZFX2XeF3s0J2d4=",
-        "last_login": null,
+        "password": "pbkdf2_sha256$1200000$iiQzumYhizeNjyEkUw0BYw$eaF/xShjMPrL/f8mRJfO1XtGJwUaWRfCD3PjvJkKABg=",
+        "last_login": "2026-08-07T11:57:52.955Z",
         "is_superuser": false,
         "username": "chris.martin",
         "first_name": "Chris",
@@ -668,8 +668,6 @@
             ]
         ],
         "tags": [
-            2,
-            17,
             20,
             8
         ]

@@ -58,8 +58,8 @@ python manage.py runserver
 ```
 
 ## Demo access
-Login: admin
-Password: 1qazcde3
+Login: chris.martin
+Password: Test123!!!
 
 ## Tests
 Tests can be run with the command `python manage.py test`.
