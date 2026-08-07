@@ -1,6 +1,9 @@
 # Task Manager
 A web app for managing team tasks: who is working on what, deadlines, priorities, tags.
 
+https://task-manager-5tu4.onrender.com
+(first load may take ~30–60s — free Render instance spins down when idle)
+
 ## Screenshots of the web application
 ![Home page of dashboard](screenshots_and_diagram/index_page.png)
 
@@ -37,11 +40,14 @@ A web app for managing team tasks: who is working on what, deadlines, priorities
    - Python 3.12
    - Django 6.0
    - Bootstrap 5
-   - SQLite
+   - SQLite (local)
+   - PostgreSQL (production)
    - crispy-forms
    - django-select2
    - django-debug-toolbar
    - Pillow
+   - gunicorn
+   - whitenoise
 
 ## Installation and launch
 
@@ -57,7 +63,9 @@ python manage.py loaddata task_manager_data
 python manage.py runserver
 ```
 
-## Demo access
+## Live demo
+https://task-manager-5tu4.onrender.com
+
 Login: chris.martin
 Password: Test123!!!
 
