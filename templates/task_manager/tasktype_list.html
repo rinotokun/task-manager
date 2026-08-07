@@ -4,7 +4,7 @@
 {% block content %}
   <h1>
     Task Types
-    <a href="{% url 'task_manager:tasktype-create' %}?next={{ request.get_full_path }}" class="btn-color btn link-to-page btn-lg">
+    <a href="{% url 'task_manager:tasktype-create' %}?next={{ request.get_full_path|urlencode }}" class="btn-color btn link-to-page btn-lg">
       Create
     </a>
   </h1>
@@ -30,8 +30,8 @@
           <tr>
             <td>{{ tasktype }}</td>
             <td>{{ tasktype.tasks.count }}</td>
-            <td><a href="{% url 'task_manager:tasktype-update' pk=tasktype.id %}?next={{ request.get_full_path }}" class="btn btn-sm btn-secondary">Update</a></td>
-            <td><a href="{% url 'task_manager:tasktype-delete' pk=tasktype.id %}?next={{ request.get_full_path }}" class="btn btn-sm btn-danger">Delete</a></td>
+            <td><a href="{% url 'task_manager:tasktype-update' pk=tasktype.id %}?next={{ request.get_full_path|urlencode }}" class="btn btn-sm btn-secondary">Update</a></td>
+            <td><a href="{% url 'task_manager:tasktype-delete' pk=tasktype.id %}?next={{ request.get_full_path|urlencode }}" class="btn btn-sm btn-danger">Delete</a></td>
           </tr>
       {% endfor %}
     </tbody>
